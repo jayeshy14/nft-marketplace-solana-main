@@ -1,0 +1,384 @@
+{
+  "address": "7Jk3dfypAJ2QSyrp3biSpyMwMgBpCPYqeChsjyunYTKx",
+  "metadata": {
+    "name": "solana_nft_anchor",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "buy_nft",
+      "discriminator": [96, 0, 28, 190, 49, 107, 83, 222],
+      "accounts": [
+        {
+          "name": "state",
+          "writable": true
+        },
+        {
+          "name": "mint",
+          "writable": true
+        },
+        {
+          "name": "sender",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "recipient"
+        },
+        {
+          "name": "sender_token_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "sender"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6, 221, 246, 225, 215, 101, 161, 147, 217, 203, 225, 70, 206,
+                  235, 121, 172, 28, 180, 133, 237, 95, 91, 55, 145, 58, 140,
+                  245, 133, 126, 255, 0, 169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
+              ]
+            }
+          }
+        },
+        {
+          "name": "recipient_token_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "recipient"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6, 221, 246, 225, 215, 101, 161, 147, 217, 203, 225, 70, 206,
+                  235, 121, 172, 28, 180, 133, 237, 95, 91, 55, 145, 58, 140,
+                  245, 133, 126, 255, 0, 169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
+              ]
+            }
+          }
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        }
+      ],
+      "args": [
+        {
+          "name": "token_id",
+          "type": "u32"
+        }
+      ]
+    },
+    {
+      "name": "get_counter",
+      "discriminator": [178, 42, 93, 7, 140, 213, 93, 150],
+      "accounts": [
+        {
+          "name": "state"
+        }
+      ],
+      "args": [],
+      "returns": "u32"
+    },
+    {
+      "name": "get_metadatauri",
+      "discriminator": [12, 247, 29, 127, 213, 255, 121, 112],
+      "accounts": [
+        {
+          "name": "state"
+        }
+      ],
+      "args": [],
+      "returns": {
+        "vec": "bytes"
+      }
+    },
+    {
+      "name": "get_nft_pending_owners",
+      "discriminator": [49, 29, 184, 218, 77, 38, 191, 134],
+      "accounts": [
+        {
+          "name": "state"
+        }
+      ],
+      "args": [],
+      "returns": {
+        "vec": {
+          "array": ["u8", 32]
+        }
+      }
+    },
+    {
+      "name": "get_nft_states",
+      "discriminator": [156, 241, 88, 168, 171, 83, 172, 30],
+      "accounts": [
+        {
+          "name": "state"
+        }
+      ],
+      "args": [],
+      "returns": "bytes"
+    },
+    {
+      "name": "get_owners",
+      "discriminator": [204, 58, 71, 128, 202, 150, 123, 65],
+      "accounts": [
+        {
+          "name": "state"
+        }
+      ],
+      "args": [],
+      "returns": {
+        "vec": {
+          "array": ["u8", 32]
+        }
+      }
+    },
+    {
+      "name": "init_nft",
+      "discriminator": [181, 181, 103, 206, 79, 44, 134, 193],
+      "accounts": [
+        {
+          "name": "state",
+          "writable": true
+        },
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "mint",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [109, 105, 110, 116]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "account",
+                "path": "state.counter",
+                "account": "State"
+              }
+            ]
+          }
+        },
+        {
+          "name": "associated_token_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6, 221, 246, 225, 215, 101, 161, 147, 217, 203, 225, 70, 206,
+                  235, 121, 172, 28, 180, 133, 237, 95, 91, 55, 145, 58, 140,
+                  245, 133, 126, 255, 0, 169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140, 151, 37, 143, 78, 36, 137, 241, 187, 61, 16, 41, 20, 142,
+                13, 131, 11, 90, 19, 153, 218, 255, 16, 132, 4, 142, 123, 216,
+                219, 233, 248, 89
+              ]
+            }
+          }
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "rent",
+          "address": "SysvarRent111111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "_metadata_uri",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "initialize",
+      "discriminator": [175, 175, 109, 31, 13, 152, 155, 237],
+      "accounts": [
+        {
+          "name": "state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [115, 116, 97, 116, 101]
+              }
+            ]
+          }
+        },
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "transfer_lamports",
+      "discriminator": [62, 53, 201, 68, 102, 134, 83, 103],
+      "accounts": [
+        {
+          "name": "state",
+          "writable": true
+        },
+        {
+          "name": "from",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "to",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "token_id",
+          "type": "u32"
+        },
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "State",
+      "discriminator": [216, 146, 107, 94, 104, 75, 182, 177]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "TransferFailed",
+      "msg": "transfer failed"
+    }
+  ],
+  "types": [
+    {
+      "name": "State",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "counter",
+            "type": "u32"
+          },
+          {
+            "name": "metadata_uri",
+            "type": {
+              "vec": "bytes"
+            }
+          },
+          {
+            "name": "owners",
+            "type": {
+              "vec": {
+                "array": ["u8", 32]
+              }
+            }
+          },
+          {
+            "name": "nft_states",
+            "type": "bytes"
+          },
+          {
+            "name": "pending_owner",
+            "type": {
+              "vec": {
+                "array": ["u8", 32]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
