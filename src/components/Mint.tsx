@@ -8,7 +8,7 @@ import {
   TOKEN_PROGRAM_ID,
 } from "@solana/spl-token";
 import { getProvider } from "../detectProvider";
-import { Buffer } from './buffer'
+import { Buffer } from "./buffer copy/index";
 
 const Mint: React.FC = () => {
   const [name, setName] = useState("");
