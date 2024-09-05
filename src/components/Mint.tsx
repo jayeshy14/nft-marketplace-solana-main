@@ -8,7 +8,6 @@ import {
   TOKEN_PROGRAM_ID,
 } from "@solana/spl-token";
 import { getProvider } from "../detectProvider";
-import { Buffer } from "./buffer copy/index";
 
 const Mint: React.FC = () => {
   const [name, setName] = useState("");
@@ -110,17 +109,32 @@ const Mint: React.FC = () => {
         .view();
       console.log("current counter: ", currentCounter);
 
-      const counterBytes = Buffer.alloc(4);
-      counterBytes.writeUInt32LE(currentCounter, 0);
-      const seeds = [
-        Buffer.from("mint"),
-        provider.publicKey.toBuffer(),
-        counterBytes,
-      ];
-      const [mintAccountPublicKey] = web3.PublicKey.findProgramAddressSync(
-        seeds,
-        program.programId
-      );
+
+    const counterBytes = new Uint8Array(4);
+    new DataView(counterBytes.buffer).setUint32(0, currentCounter, true);
+
+    const seeds = [
+      new TextEncoder().encode("mint"),
+      provider.publicKey.toBuffer(),
+      counterBytes,
+    ];
+
+    const [mintAccountPublicKey] = web3.PublicKey.findProgramAddressSync(
+      seeds,
+      program.programId
+    );
+
+      // const counterBytes = Buffer.alloc(4);
+      // counterBytes.writeUInt32LE(currentCounter, 0);
+      // const seeds = [
+      //   Buffer.from("mint"),
+      //   provider.publicKey.toBuffer(),
+      //   counterBytes,
+      // ];
+      // const [mintAccountPublicKey] = web3.PublicKey.findProgramAddressSync(
+      //   seeds,
+      //   program.programId
+      // );
       setMintAccount(mintAccountPublicKey);
 
       const ata = await getAssociatedTokenAddress(
