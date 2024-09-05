@@ -27,7 +27,6 @@ const Mint: React.FC = () => {
   const [stateAccount, setStateAccount] = useState<web3.PublicKey>(
     new web3.PublicKey("9Vj7E3HAc3bcVHz2ZB3J3vTT4DGirdQ7eHawhde1fRUZ")
   ); //checking
-// const REACT_APP_PINATA_JWT = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJlOWQwZDE4ZC1iOGMxLTRhYzctYjY1Zi1kZThkZmY2OWRhYjgiLCJlbWFpbCI6ImpheWVzaG55YWRhdjQ5N0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicGluX3BvbGljeSI6eyJyZWdpb25zIjpbeyJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MSwiaWQiOiJGUkExIn0seyJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MSwiaWQiOiJOWUMxIn1dLCJ2ZXJzaW9uIjoxfSwibWZhX2VuYWJsZWQiOmZhbHNlLCJzdGF0dXMiOiJBQ1RJVkUifSwiYXV0aGVudGljYXRpb25UeXBlIjoic2NvcGVkS2V5Iiwic2NvcGVkS2V5S2V5IjoiNzI0NzUxOGRhOTNkOTg2MzlmZjgiLCJzY29wZWRLZXlTZWNyZXQiOiI5MTkwYzUwMGVjOTlhYTQyNjJjNmFkZjlmYzdkMDk5OWMzZmM2YTZkMDA1NTQxZWI1ZjQ3MjFlMGY4MGYxZjk0IiwiZXhwIjoxNzU3MDQzNzk0fQ.bJ5rc55_w8PSYkc7ieuqneljWwTsXBwIAApyuu4XMuU';
   const REACT_APP_PINATA_JWT = process.env.REACT_APP_PINATA_JWT;
 
   useEffect(() => {
